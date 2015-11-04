@@ -1,0 +1,62 @@
+//// Project3-Pool table with objects
+////Evelyn Levine
+//// (Assume ball diameter of 30.)
+
+//// GLOBALS:  pool table, 3 colored balls
+
+String title=  "Pool Table with objects";
+String news=   "Use 'r' key to reset.";
+String author=  "Evelyn Levine";
+
+//pool table
+float left, right, top, bottom;
+float middle;
+
+//// SETUP:  size and table
+void setup() {
+  size( 600, 400 );
+  left=   50;
+  right=  width-50;
+  top=    100;
+  bottom= height-50;
+  middle= left + (right-left) / 2;
+  //
+ // reset();
+}
+
+//// NEXT FRAME:  table, bounce off walls, collisions, show all
+void draw() {
+  background( 250,250,200 );
+  rectMode( CORNERS );
+  table( left, top, right, bottom );
+ // bounce();
+  //collisions();
+  show();
+  messages();
+}
+
+//// SCENE:  draw the table with walls
+void table( float left, float top, float right, float bottom ) {
+  fill( 100, 250, 100 );    // green pool table
+  strokeWeight(20);
+  stroke( 127, 0, 0 );      // Brown walls
+  rect( left-20, top-20, right+20, bottom+20 );
+  stroke(0);
+  strokeWeight(1);
+}
+
+void messages() {
+  fill(0,0,0);
+  text( title, width/3, 20 );
+  text( news, width/3, 40 );
+  text( author, 10, height-10 );
+}
+
+
+//// HANDLERS:  keys, click
+void keyPressed() {
+
+   if (key == 'q') {
+    exit();                           // press 'q' key to QUIT.
+  }
+}
