@@ -1,7 +1,7 @@
 //// Project 3, Evelyn Pool table With Objects
 
 //Globals:pool table, balls, bird,mouse
-Ball a, r, g, b, y;
+Ball a, n, g, b, y;
 Buttons reset, rwall, bird, rat;
 
 String title=  "Pool Table with objects";
@@ -25,8 +25,8 @@ void setup() {
   //creating balls.
   a= new Ball( width/8, height/2, color (255),0,0);                                    // cue ball
   a.name= "0";
-  r= new Ball( color (255,0,0), random( middle+25, right), random (top, bottom) );     // red ball
-  r.name= "1";
+  n= new Ball( color (255,0,0), random( middle+25, right), random (top, bottom) );     // red ball
+  n.name= "1";
   g= new Ball( color (0,255,0), random( middle+25, right), random (top, bottom) );     // green ball
   g.name= "2";
   b= new Ball( color (0,0,255), random( middle+25, right), random (top, bottom) );     // blue ball
@@ -52,7 +52,7 @@ void setup() {
 
 void reset() {
   a.reset();
-  r.reset();
+  n.reset();
   g.reset();
   b.reset();
   y.reset();
@@ -93,26 +93,26 @@ void table( float east, float north, float west, float south ) {
 
 void ball() { 
   a.show();
-  r.show();
+  n.show();
   g.show();
   b.show();
   y.show();
   
   a.move();
-  r.move();
+  n.move();
   g.move();
   b.move();
   y.move();
   
   //// Elastic collisions.
-  collision( a,r);
+  collision( a,n);
   collision( a,g);
   collision( a,b);
   collision( a,y);
   
-  collision( r,g);
-  collision( r,b);
-  collision( r,y);
+  collision( n,g);
+  collision( n,b);
+  collision( n,y);
   
   collision( g,b);
   collision( g,y);
@@ -139,32 +139,12 @@ void keyPressed() {
 
 }
 
-//click on ball to reset the ball.
-void mousePressed() {
-  r.mousePressed();
-  g.mousePressed();
-  b.mousePressed();
-  y.mousePressed();
-  
-  if ( mouseX<100 && mouseX>40 && mouseY<120 && mouseY>90) {
-   reset();
-  }
-  
-  if ( mouseX<170 && mouseX>110 && mouseY<120 && mouseY>90) {
-   wall=false;
-   r.move2();
-   g.move2();
-   b.move2();
-   y.move2();
-  }
-
-}
 
 void buttons() {
-  reset.show();
-  rwall.show();
-  bird.show();
-  rat.show();
+//  reset.show();
+ // rwall.show();
+//  bird.show();
+//  rat.show();
 }
 
 
