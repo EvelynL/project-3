@@ -1,7 +1,7 @@
 //// Project 3, Evelyn Pool table With Objects
 
 //Globals:pool table, balls, bird,mouse
-Ball c, r, g, b, y;
+Ball a, r, g, b, y;
 Buttons reset, rwall, bird, rat;
 
 String title=  "Pool Table with objects";
@@ -23,8 +23,8 @@ void setup() {
   middle= left + (right-left) / 2;
   
   //creating balls.
-  c= new Ball( width/8, height/2, color (255),0,0);                                    // cue ball
-  c.name= "0";
+  a= new Ball( width/8, height/2, color (255),0,0);                                    // cue ball
+  a.name= "0";
   r= new Ball( color (255,0,0), random( middle+25, right), random (top, bottom) );     // red ball
   r.name= "1";
   g= new Ball( color (0,255,0), random( middle+25, right), random (top, bottom) );     // green ball
@@ -90,23 +90,23 @@ void table( float east, float north, float west, float south ) {
 
 
 void ball() { 
-  c.show();
+  a.show();
   r.show();
   g.show();
   b.show();
   y.show();
   
-  c.move();
+  a.move();
   r.move();
   g.move();
   b.move();
   y.move();
   
   //// Elastic collisions.
-  collision( c,r);
-  collision( c,g);
-  collision( c,b);
-  collision( c,y);
+  collision( a,r);
+  collision( a,g);
+  collision( a,b);
+  collision( a,y);
   
   collision( r,g);
   collision( r,b);
