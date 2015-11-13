@@ -70,18 +70,18 @@ void draw() {
 }
 
 
-void table( float east, float north, float west, float south ) {
+void table( float right, float top, float left, float bottom ) {
   rectMode( CORNERS );
   fill( tableRed, tableGreen, tableBlue );    // pool table
   strokeWeight(20);
   stroke( 0, 153,0 );   
-  rect( east-20, north-20, west+20, south+20 );
+  rect( right-20, top-20, left+20, bottom+20 );
   
   // Start with a WALL down the middle of the table! 
   if (wall) {
-    float middle=  (east+west)/2;    
+    float middle=  (right+left)/2;    
     stroke(0,0,30);
-    line( middle,north+10, middle,south-10 );
+    line( middle,top+10, middle,bottom-10 );
   }
   stroke(0);
   strokeWeight(1);
