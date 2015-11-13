@@ -172,28 +172,28 @@ void show() {
 
 
 class Ball {
-  int c;
+  int a;
   float x, y;
   float dx=random(1,3), dy=random(1,3);
   String name="";
   
-Ball( float tempx, float tempy, color tempc, float tempdx, float tempdy) {
-  c=tempc;
+Ball( float tempx, float tempy, color tempa, float tempdx, float tempdy) {
+  a=tempa;
   x=tempx;
   y=tempy;
   dy=tempdy;
   dx=tempdx;
   
 } 
-Ball( color tempc, float tempx, float tempy) {
-  c=tempc;
+Ball( color tempa, float tempx, float tempy) {
+  a=tempa;
   x=tempx;
   y=tempy;
  
 }
   
  void show() {
-   fill(c);
+   fill(a);
    ellipse( x, y, 30,30);
    fill(0);
    textSize(15);
