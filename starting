@@ -35,13 +35,14 @@ void setup() {
   y.name= "4";
   
   //creating buttons, and name.
-  reset = new Buttons( 70,105,60,30);
+ 
+  reset = new Buttons( 70,15,60,30);
   reset.name= "RESET";
-  rwall = new Buttons( 140,105,60,30);
+  rwall = new Buttons( 190,15,60,30);
   rwall.name= "WALL";
-  bird  = new Buttons( 70,145,60,30);
+  bird  = new Buttons(290,15,60,30);
   bird.name= "BIRDS";
-  rat   = new Buttons( 140,145,60,30);
+  rat   = new Buttons( 390,15,60,30);
   rat.name= "RAT";
   
   reset();
@@ -50,6 +51,7 @@ void setup() {
 
 
 void reset() {
+  a.reset();
   r.reset();
   g.reset();
   b.reset();
@@ -265,7 +267,7 @@ Ball( color tempc, float tempx, float tempy) {
 
 void messages() {
   fill(0,0,0);
-  text( title, width/3, 20 );
-  text( news, width/3, 40 );
+  text( title, width/4, 20 );
+  text( news, width/4, 40 );
   text( author, 10, height-10 );
 }
