@@ -64,7 +64,7 @@ void reset() {
 void draw() {
   background( 250,250,200 );                                                 //background color
   table( left, top, right, bottom );
- 
+
   ball();
   buttons();
 }
@@ -121,10 +121,10 @@ void ball() {
 } 
 
 void collision( Ball p, Ball q ) {
- if ( p.hit( q.bx,q.by ) ) {
+ if ( p.hit( q.x,q.y ) ) {
     float tmp;
-    tmp=p.bdx;  p.bdx=q.bdx;  q.bdx=tmp;      // Swap the velocities.
-    tmp=p.bdy;  p.bdy=q.bdy;  q.bdy=tmp;
+    tmp=p.dx;  p.dx=q.dx;  q.dx=tmp;      // Swap the velocities.
+    tmp=p.dy;  p.dy=q.dy;  q.dy=tmp;
     p.move();  p.move();   p.move();
     q.move();  q.move();   q.move();
   }
@@ -135,8 +135,6 @@ void keyPressed() {
   if( key == 'r') {
     reset();
   }
-
-
 }
 
 
@@ -175,40 +173,40 @@ void show() {
 
 class Ball {
   int c;
-  float bx, by;
-  float bdx=random(1,3), bdy=random(1,3);
+  float x, y;
+  float dx=random(1,3), dy=random(1,3);
   String name="";
   
 Ball( float tempx, float tempy, color tempc, float tempdx, float tempdy) {
   c=tempc;
-  bx=tempx;
-  by=tempy;
-  bdy=tempdy;
-  bdx=tempdx;
+  x=tempx;
+  y=tempy;
+  dy=tempdy;
+  dx=tempdx;
   
 } 
 Ball( color tempc, float tempx, float tempy) {
   c=tempc;
-  bx=tempx;
-  by=tempy;
+  x=tempx;
+  y=tempy;
  
 }
   
  void show() {
    fill(c);
-   ellipse( bx, by, 30,30);
+   ellipse( x, y, 30,30);
    fill(0);
    textSize(15);
-   text( name, bx-5, by+5);
+   text( name, x-5, y+5);
    
  }
  
  void move() {
-  bx = bx + bdx;
-  by = by + bdy;
+  x = x + dx;
+  y = y + dy;
   // bounce off wall
-  if ( bx < middle+25 || bx > right ) bdx *= -1;
-  if ( by < top || by > bottom )      bdy *= -1;
+  if ( x < middle+25 || x > right ) dx *= -1;
+  if ( y < top || y > bottom )      dy *= -1;
  }
  void move2() { 
    if (wall=!wall) { 
@@ -219,26 +217,26 @@ Ball( color tempc, float tempx, float tempy) {
  
 }
  void reset() {
-    bx=  random(middle+25, right );
-    by=  random( top, bottom );
-    bdx=  random( 1,3 );
-    bdy=  random( 1,3 );
+    x=  random(middle+25, right );
+    y=  random( top, bottom );
+    dx=  random( 1,3 );
+    dy=  random( 1,3 );
     wall= true;
     middle= 355;
 
 
   }
   boolean hit( float x, float y ) {
-    if (  dist( x,y, this.bx,this.by ) < 30 ) return true;
+    if (  dist( x,y, this.x,this.y ) < 30 ) return true;
     else return false;
   }
  
  void mousePressed() {
-   if (dist ( bx, by, mouseX, mouseY) <30) {
-     bx=  random( 390,right );     
-     by=  random( top, bottom );
-     bdx=  random( 1,3 );    
-     bdy=  random( 1,3 );
+   if (dist ( x, y, mouseX, mouseY) <30) {
+     x=  random( 390,right );     
+     y=  random( top, bottom );
+     dx=  random( 1,3 );    
+     dy=  random( 1,3 );
    }
 
  }
