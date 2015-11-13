@@ -8,6 +8,8 @@ String title=  "Pool Table with objects";
 String news=   "Use 'r' key to reset.";
 String author=  "Evelyn Levine";
 
+int collisions; 
+
 
 int tableRed=70, tableGreen=240, tableBlue=100;                            // pool table color
 float left=50, right=450, top=100, bottom=250;                                // Table boundaries
@@ -56,7 +58,8 @@ void reset() {
   g.reset();
   b.reset();
   y.reset();
-  
+   //reset collision to 0.
+    collisions=0;
 }
   
 
@@ -64,7 +67,7 @@ void reset() {
 void draw() {
   background( 250,250,200 );                                                 //background color
   table( left, top, right, bottom );
-
+  messages();
   ball();
   buttons();
 }
@@ -118,6 +121,7 @@ void ball() {
   collision( g,y);
  
   collision( b,y);
+   collisions +=1;
 } 
 
 void collision( Ball p, Ball q ) {
@@ -135,6 +139,8 @@ void keyPressed() {
   if( key == 'r') {
     reset();
   }
+  if (key == 'q') { exit();  }
+  if (key == 'w') {wall = false;}
 }
 
 
@@ -245,7 +251,11 @@ Ball( color tempa, float tempx, float tempy) {
 
 void messages() {
   fill(0,0,0);
-  text( title, width/4, 20 );
-  text( news, width/4, 40 );
+  text( title, width/4, 10 );
+  text( news, width/4, 20 );
   text( author, 10, height-10 );
+  text( "collisions= ", 135, height-5);
+  text( collisions, 200, height-5);
+  text(" press w to remove wall",100,50);
+
 }
