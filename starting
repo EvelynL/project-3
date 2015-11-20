@@ -1,4 +1,4 @@
-///Project 3, Evelyn Pool table with objects
+ ///Project 3, Evelyn Pool table with objects
 
 ////Globals
   //objects
@@ -25,28 +25,34 @@ void setup() {
    top= 100;
    bottom= height-50;
    middle= right - left/2;
+   
 ///Cue
    a= new Ball();
    a.r=255;
    a.g=255;
    a.b=255;
+   
 ///Red Ball   
    n= new Ball();
    n.r=255;
    n.name= "1";
+   
 ///Green ball
    g= new Ball();
    g.g=255;
    g.name= "2";
+   
 ///Blue ball
    d= new Ball();
    d.b=255;
    d.name= "3";
+   
 ///Yellow ball
    e= new Ball();
    e.r=255;
    e.g=255;
    e.name= "4";
+   
 ///Violet ball
    f= new Ball();
    f.r=255;
@@ -55,13 +61,16 @@ void setup() {
 
 ///Rodent
    rat= new Rodent();
+   
 ///Bird
    jay= new Bird();
+   
 //
    reset();
 }
 
 void reset(){
+  
   a.x=100; a.y=280; a.dx=0; a.dy=0;
   n.reset();
   g.reset();
@@ -70,11 +79,14 @@ void reset(){
   f.reset();
   rat.reset();
   jay.reset();
+  
 ///wall
    wall=true;
+   
 ///color
    tableRed=0; tableGreen=153; tableBlue=0;
 }
+
 /////Handlers
  void keyPressed() {
    if(key == 'q') {
@@ -83,20 +95,24 @@ void reset(){
    if(key == 'r') {
      reset();
    }
+   
 ///Remove wall   
    if(key == 'w') {
      wall=false;
    }
+   
 ///Release rat   
    if(key == 'm') {
      rat.dx=5;
      rat.dy=3;
    }
+   
 ///Release bird   
    if(key == 'b') {
      jay.dx=3;
    }
  }
+ 
 ///Functions 
  void draw(){
      background(255,255,204 );
@@ -107,6 +123,7 @@ void reset(){
      rodent();
      bird();
  }
+ 
 ////Scene: Table and wall
  void table( float east, float north, float west, float south ) {
   fill( tableRed, tableGreen, tableBlue );    // pool table
@@ -123,14 +140,17 @@ void reset(){
    stroke(0);
    strokeWeight(1);
  }
+ 
 ////Show: Balls, Rodent, Bird 
  void balls() {
+   
    a.move();
    n.move();
    g.move();
    d.move();
    e.move();
    f.move();
+   
    collision(a,n);
    collision(a,g);
    collision(a,d);
@@ -146,6 +166,7 @@ void reset(){
    collision(d,e);
    collision(d,f);
    collision(e,f);
+   
    //
    a.show();
    n.show();
@@ -157,6 +178,7 @@ void reset(){
  }
  
  void rodent() {
+   
     snatch(rat,a);
     snatch(rat,n);
     snatch(rat,g);
@@ -167,6 +189,7 @@ void reset(){
     rat.show();
     rat.move();
  }
+ 
  void bird() {
     jay.show();
     jay.move();
@@ -207,6 +230,7 @@ void reset(){
     fill(0);
     text( name, x-5,y );
   }
+  
   void move() {
     if(wall) {
     if (x>right || x<width/1.9) {  dx=  -dx; }
@@ -221,6 +245,7 @@ void reset(){
     x += dx;
     y += dy;
   }
+  
   void reset() {
     x=  random(middle, right);
     y=  random( top, bottom );
@@ -245,11 +270,13 @@ class Rodent{
     fill(255,255,255);                     ellipse(x,y, 60, 60);//// Rodent body
     stroke(255,204,229); strokeWeight(2);  line(x-30, y, x-50, y+30); ////Rodent tail
     stroke(0);///color Rodent legs black
+    
 //////Rodent animation: leg movement
     if(frameCount % 30 > 15){ 
 ///Rodent legs first position
     line( x-20, y+10, x-30, y+20);
     line(x+20, y+10, x+30, y+20);}
+    
 ///Rodent leg second position
     else{line( x-10, y+10, x-10, y+20);
    }
@@ -258,6 +285,7 @@ class Rodent{
  void move(){
 ///rat remains on table
    if (y>bottom || y<top) {  dy=  -dy; }
+   
 ///reset rat position without resetting entire program   
    if(x>width) {reset();}
    x+=dx;
@@ -296,6 +324,7 @@ class Bird {
    else{fill(255,255,153); triangle(x-10, y, x, y-25, x+10, y);
 }
 }
+
   void move() {
    if( x>width) { dx= -dx;}
    if(dx == -3 && x<0) {dx= -dx;} 
@@ -317,7 +346,6 @@ void messages() {
   text( collisions, 200, height-5);
   text(" press w to remove wall",10,50);
 
-}       
-    
+}  
 
 
