@@ -1,6 +1,7 @@
 ///Project 3, Evelyn Pool table with objects
 
 ////Globals
+  //objects
 Ball a,n,g,d,e,f;
 Rodent rat;
 Bird jay;
@@ -11,6 +12,7 @@ String author=  "Evelyn Levine";
 
 int collisions; 
 
+///table
 float left, right, top, bottom;
 float middle;
 boolean wall=true;
@@ -100,6 +102,7 @@ void reset(){
      background(255,255,204 );
      rectMode( CORNERS );
      table(left, top, right, bottom);
+     messages();
      balls();
      rodent();
      bird();
@@ -150,6 +153,7 @@ void reset(){
    d.show();
    e.show();
    f.show();
+    collisions +=1;
  }
  
  void rodent() {
@@ -306,12 +310,14 @@ class Bird {
    
 void messages() {
   fill(0,0,0);
-  text( title, width/4, 10 );
-  text( news, width/4, 20 );
+  text( title, width/5, 10 );
+  text( news, width/5, 20 );
   text( author, 10, height-10 );
   text( "collisions= ", 135, height-5);
   text( collisions, 200, height-5);
-  text(" press w to remove wall",100,50);
+  text(" press w to remove wall",10,50);
 
 }       
     
+
+
