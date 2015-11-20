@@ -1,4 +1,4 @@
- ///Project 3, Evelyn Pool table with objects
+///Project 3, Evelyn Pool table with objects
 
 ////Globals
   //objects
@@ -345,7 +345,8 @@ void messages() {
   text( "collisions= ", 135, height-5);
   text( collisions, 200, height-5);
   text(" press w to remove wall",10,50);
-
-}  
-
+  text("press m to make mouse show",10,60);
+  text("press b for bird",10,70);
+}       
+    
 
